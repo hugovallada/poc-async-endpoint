@@ -26,5 +26,7 @@ public class GetCep implements GetCepUseCase {
         out.printf("Dados recuperados com sucesso: %s - %s - %s - %s",
                 address.cep, address.city, address.state, address.street
         );
+        out.println();
+        out.println(Thread.currentThread().getName());
     }
 }
