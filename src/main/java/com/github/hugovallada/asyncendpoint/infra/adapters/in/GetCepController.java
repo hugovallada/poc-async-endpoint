@@ -25,3 +25,5 @@ public class GetCepController implements GetCepApi {
         CompletableFuture.runAsync(() -> getCepUseCase.execute(cep));
     }
 }
+
+
