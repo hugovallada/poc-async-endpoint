@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @RestController
 @RequestMapping("/cep")
@@ -22,7 +24,8 @@ public class GetCepController implements GetCepApi {
     @GetMapping("/{cep}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void execute(@PathVariable String cep) {
-        CompletableFuture.runAsync(() -> getCepUseCase.execute(cep));
+        ExecutorService virtualThreadExecutor = Executors.newVirtualThreadPerTaskExecutor();
+        CompletableFuture.runAsync(() -> getCepUseCase.execute(cep), virtualThreadExecutor);
     }
 }
 

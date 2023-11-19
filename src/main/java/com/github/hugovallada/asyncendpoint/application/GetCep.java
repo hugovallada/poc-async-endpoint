@@ -31,9 +31,8 @@ public class GetCep implements GetCepUseCase {
                 .city(addressDTO.cidade())
                 .build();
         out.printf("Dados recuperados com sucesso: %s - %s - %s - %s",
-                address.cep, address.city, address.state, address.street
-        );
+                address.cep, address.city, address.state, address.street);
         out.println();
-        out.println(Thread.currentThread().getName());
+        out.printf("Virtual Thread ID: %s%n", Thread.currentThread().threadId());
     }
 }
